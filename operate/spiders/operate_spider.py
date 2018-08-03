@@ -7,7 +7,7 @@ from scrapy.http import Request
 class OperateSpider(Spider):
     name = "operate_spider"
     allowed_urls = ['http://www.airlinequality.com/']
-    airline = 'delta-air-lines'
+    airline = 'american-airlines'
     start_urls = ['http://www.airlinequality.com/airline-reviews/' + airline]
 
     def parse(self, response):
@@ -23,84 +23,84 @@ class OperateSpider(Spider):
         	try:
         		Textchunk = response.xpath('//*[@id="anchor' + i + '"]/div/div[1]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		Textchunk = float('nan')
+        		Textchunk = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Recommended')
         		Recommended = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr[' + str(row_no+1)  + ']/td/text()').extract()[1]
         	except (ValueError, IndexError):
-        		Recommended = float('nan')
+        		Recommended = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Aircraft')
         		Aircraft = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr[' + str(row_no+1)  + ']/td/text()').extract()[1]
         	except (ValueError, IndexError):
-        		Aircraft = float('nan')
+        		Aircraft = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Type Of Traveller')
         		TypeOfTraveller = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr[' + str(row_no+1)  + ']/td/text()').extract()[1]
         	except (ValueError, IndexError):
-        		TypeOfTraveller = float('nan')
+        		TypeOfTraveller = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Cabin Flown')
         		CabinFlown = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr[' + str(row_no+1)  + ']/td/text()').extract()[1]
         	except (ValueError, IndexError):
-        		CabinFlown = float('nan')
+        		CabinFlown = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Route')
         		Route = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr[' + str(row_no+1)  + ']/td/text()').extract()[1]
         	except (ValueError, IndexError):
-        		Route = float('nan')
+        		Route = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Date Flown')
         		DateFlown = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr[' + str(row_no+1)  + ']/td/text()').extract()[1]
         	except (ValueError, IndexError):
-        		DateFlown = float('nan')
+        		DateFlown = 'nan'
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Seat Comfort')
         		SeatComfort = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		SeatComfort = float('nan')
+        		SeatComfort = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Cabin Staff Service')
         		CabinStaffService = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		CabinStaffService = float('nan')
+        		CabinStaffService = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Food & Beverages')
         		FoodAndBeverages = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		FoodAndBeverages = float('nan')
+        		FoodAndBeverages = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Inflight Entertainment')
         		InflightEntertainment = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		InflightEntertainment = float('nan')
+        		InflightEntertainment = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Ground Service')
         		GroundService = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		GroundService = float('nan')
+        		GroundService = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Wifi & Connectivity')
         		WifiAndConnectivity = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		WifiAndConnectivity = float('nan')
+        		WifiAndConnectivity = 'nan'
 
         	try:
         		row_no = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr/td[1]/text()').extract().index('Value For Money')
         		ValueForMoney = response.xpath('//*[@id="anchor' + i + '"]/div/div[2]/table//tr['+ str(row_no+1) +']/td/span[@class="star fill"]/text()').extract()[-1]
         	except (ValueError, IndexError):
-        		ValueForMoney = float('nan')
+        		ValueForMoney = 'nan'
 
         	item = OperateItem()
         	item['Textchunk'] = Textchunk
@@ -110,12 +110,12 @@ class OperateSpider(Spider):
         	item['CabinFlown'] = CabinFlown
         	item['Route'] = Route
         	item['DateFlown'] = DateFlown
-        	item['SeatComfort'] = SeatComfort
-        	item['CabinStaffService'] = CabinStaffService
-        	item['FoodAndBeverages'] = FoodAndBeverages
-        	item['InflightEntertainment'] = InflightEntertainment
-        	item['GroundService'] = GroundService
-        	item['WifiAndConnectivity'] = WifiAndConnectivity
-        	item['ValueForMoney'] = ValueForMoney
+        	item['SeatComfort'] = float(SeatComfort)
+        	item['CabinStaffService'] = float(CabinStaffService)
+        	item['FoodAndBeverages'] = float(FoodAndBeverages)
+        	item['InflightEntertainment'] = float(InflightEntertainment)
+        	item['GroundService'] = float(GroundService)
+        	item['WifiAndConnectivity'] = float(WifiAndConnectivity)
+        	item['ValueForMoney'] = float(ValueForMoney)
 
         	yield item
