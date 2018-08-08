@@ -7,7 +7,7 @@ from scrapy.http import Request
 class OperateSpider(Spider):
     name = "operate_spider"
     allowed_urls = ['http://www.airlinequality.com/']
-    airline = 'american-airlines'
+    airline = 'korean-air'
     start_urls = ['http://www.airlinequality.com/airline-reviews/' + airline]
 
     def parse(self, response):
